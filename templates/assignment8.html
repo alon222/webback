@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% block title %}
+assignment8
+{% endblock %}
+    {%block main%}
+
+    <h1>hey {{user_name | default('my friend',true) | upper }}</h1>
+    {{super()}}
+    {%if ishobbies %}
+        <ul>
+            {% for hobby in hobbies %}
+                <li>{{hobby}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <ul>
+            {% for style in music %}
+                <li>{{style}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endblock%}

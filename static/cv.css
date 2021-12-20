@@ -1,0 +1,122 @@
+/* input,label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+form{
+    direction: rtl;
+}
+.group{
+    display: flex;
+    justify-content: center;
+}
+h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form button{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 40px;
+    padding: 5px 80px;
+    background: lightblue;
+}
+#demo{
+    display: flex;
+    justify-content: center;
+}
+button{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 80px;
+    padding: 5px 80px;
+    background: lightblue;
+}
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.header{
+    grid-area: header;
+    width: 100%;
+    text-align: center;
+    background-color: aqua;
+}
+.header h1{
+    animation-name: title;
+    animation-duration: 2s;
+    animation-iteration-count: 5;
+}
+.content-left{
+    grid-area: content-left;
+    width: 100%;
+    text-align: right;
+    padding: 15px 0px;
+}
+.contect-right{
+    grid-area: content-right;
+    width: 100%;
+    padding: 15px 30px;
+    text-align: center;
+}
+.grid-template ul{
+    direction: rtl;
+}
+.contect-right ul{
+    list-style-type: none;
+}
+.footer{
+    grid-area: footer;
+    width: 100%;
+    background-color: blue;
+    padding-left: 15px;
+    margin-top: 100px;
+}
+.footer h2{
+    text-align: center;
+}
+.grid-template{
+    display: grid;
+    grid-template-areas: 
+    'header header'
+    'content-left content-right'
+    'footer footer';
+}
+@media only screen and (max-width : 500px){
+    .grid-template{
+        grid-template-areas: 'header''content-left''content-right''footer';
+    }
+    .footer{
+        background-color: grey;
+    }
+    .contect-right{
+        text-align: right;
+
+    }
+
+}
+@keyframes title {
+    0% {color: #82AACB;}
+    50% {color: #2C3E50;}
+    100% {color: #82AACB;}
+ }
+
+ a{
+     margin: 20px;
+     padding: 10px 5px;
+     border-radius: 10px;
+     display: flex;
+     justify-content: center;
+     text-decoration: none;
+     background-color: lightblue;
+     color: black;
+ }
+ a:hover{
+     opacity: 0.7;
+ }
