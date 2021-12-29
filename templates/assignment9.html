@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{% block title %}
+assignment8
+{% endblock %}
+{%block main%}
+    <h1>this is search form</h1>
+    <form action="/assignment9" method="GET">
+        <input name="search" type="text"><br>
+        <input type="submit">
+    </form>
+    {{message}}
+    {% if users%}
+        <ul> 
+            {% for k,v in users.items() %}
+                <li>
+                    name: {{v.name}} | email: {{v.email}} | nickname: {{v.nickname}}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif%}
+    <hr>
+    {% if session.nickname == ''%}
+        <h1>registeration form</h1>
+        <form action="/assignment9" method="post">
+            user name: <input name="user_name" type="text"><br>
+            password: <input name="password" type="password"><br>
+            email: <input name="email" type="email"><br>
+            nickname: <input name="nickname" type="text"><br>
+            <input type="submit">
+        </form>
+    {% endif%}
+{% endblock%}

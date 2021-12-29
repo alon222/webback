@@ -1,3 +1,27 @@
 <div class="header">
-    <h1>בורכים הבאים לקורת חיים של אלון קליימן</h1>
+    <h1>ברוכים הבאים לקורות חיים של אלון קליימן</h1>
+</div>
+<div class="nav">
+    <ul>
+        {% if session.nickname%}
+        <li>
+            <a href="/logout">logout</a>
+        </li>
+        {%endif%}
+        <li>
+            <a href="/">home</a>
+        </li>
+        <li>
+            <a href="/assignment8">assignment8</a>
+        </li>
+        <li>
+            <a href="/assignment9">assignment9</a>
+        </li>
+        {% if session.nickname%}
+        <li>
+            <h4>{{session.nickname}} your logged in</h4>
+        </li>
+        {%endif%}
+    </ul>
+
 </div>
