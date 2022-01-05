@@ -1,10 +1,15 @@
 from re import search
 from flask import Flask , redirect, url_for,render_template
-from flask import request,session
+from flask import request,session,Blueprint
 app = Flask(__name__)
 app.secret_key='123'
 app.config['DEBUG'] = True
+from interact_with_DB import *
 
+
+
+from pages.assignment10.assignment10 import assignment10
+app.register_blueprint(assignment10)
 
 @app.route("/")
 def home():
@@ -13,6 +18,7 @@ def home():
 @app.route("/contact-me")
 def contact():
     return render_template('cv1.html')
+
 
 @app.route("/assignment8")
 def assignment8():

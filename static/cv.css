@@ -6,6 +6,9 @@
 .form{
     direction: rtl;
 }
+.title{
+    padding: 20px;
+}
 .group{
     display: flex;
     justify-content: center;
