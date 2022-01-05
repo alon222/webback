@@ -4,7 +4,7 @@ alons cv
 {% endblock %}
 
 {%block main%}
-    {{mes}}
+    <div class="alert">{{mes}}</div>
     <h2 class="title">insert new user to DB</h2>
     <form action="/insert_user" method="POST">
         <input type="text" name="username" placeholder="username">
