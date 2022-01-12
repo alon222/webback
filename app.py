@@ -1,6 +1,9 @@
 from re import search
 from flask import Flask , redirect, url_for,render_template
-from flask import request,session,Blueprint
+from flask import request,session,Blueprint,jsonify
+import requests
+import random
+import json
 app = Flask(__name__)
 app.secret_key='123'
 app.config['DEBUG'] = True
@@ -70,6 +73,27 @@ def log_out():
 @app.route("/home")
 def home_page():
     return redirect(url_for('home'))
+
+@app.route("/assignment11/users")
+def user_api():
+    query = 'select * from users;'
+    users = interact_db(query=query, query_type='fetch')
+    return jsonify(users)
+@app.route("/assignment11/outer_source")
+def fetch_ex():
+    if request.args:
+        id = request.args['reqid']
+        res = requests.get(f'https://reqres.in/api/users/{id}')
+        res = res.json()
+        return render_template('assignment11.html', res=res)
+    return render_template('assignment11.html')
+
+# @app.route("/assignment11/request_backend")
+# def handle_request():
+#     id=request.args['reqid']
+#     res=requests.get(f'https://reqres.in/api/users/{id}')
+#     res=res.json()
+#     return render_template('assignment11.html',res=res)
 
 if __name__=='__main__':
     app.run(debug=True)

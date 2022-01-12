@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% block title %}
+assignment11
+{% endblock %}
+{%block main%}
+    <h1>request from frontend</h1>
+    <form onsubmit="ajax(event)">
+        <input type="number" id="reqid" placeholder="id">
+        <input type="submit">
+    </form>
+    <h1>request from backend</h1>
+        <form action="/assignment11/outer_source">
+        <input type="number" name="reqid"  placeholder="id">
+        <input type="submit">
+    </form>
+    <main>
+        {% if res %}
+            <img src="{{ res.data.avatar }}"/>
+            <h1>{{ res.data.first_name }}</h1>
+            <h1>{{res.data.last_name}}</h1>
+        {% endif %}
+    </main>
+    <script src="{{ url_for('static', filename='ajax.js') }}"></script>
+
+{% endblock%}
