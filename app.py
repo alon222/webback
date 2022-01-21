@@ -79,6 +79,7 @@ def user_api():
     query = 'select * from users;'
     users = interact_db(query=query, query_type='fetch')
     return jsonify(users)
+
 @app.route("/assignment11/outer_source")
 def fetch_ex():
     if request.args:
@@ -94,6 +95,26 @@ def fetch_ex():
 #     res=requests.get(f'https://reqres.in/api/users/{id}')
 #     res=res.json()
 #     return render_template('assignment11.html',res=res)
+
+@app.route("/assignment12/restapi_users/", defaults={'user_id':10})
+@app.route("/assignment12/restapi_users/<int:user_id>")
+def user_api_ex12(user_id):
+    query = 'select * from users where id=%s;' % user_id
+    users = interact_db(query=query, query_type='fetch')
+    if len(users)==0:
+        user_dict={
+            'status':'failed',
+            'message':'user not found in the database'
+        }
+    else:
+        user_dict = {'id': users[0].id,
+                     'name': users[0].name,
+                     'nickname': users[0].nickname,
+                     'email': users[0].email,
+                     'create_date': users[0].create_date
+                     }
+    return jsonify(user_dict)
+
 
 if __name__=='__main__':
     app.run(debug=True)
